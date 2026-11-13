@@ -1,0 +1,27 @@
+{
+  "blocks": [
+    {
+      "id": "trees",
+      "name": "Urban trees",
+      "terms": [
+        "\"urban trees\"",
+        "\"urban forest\"",
+        "\"street trees\""
+      ]
+    },
+    {
+      "id": "heat",
+      "name": "Urban heat",
+      "terms": [
+        "\"urban heat\"",
+        "\"heat island\"",
+        "cooling"
+      ]
+    }
+  ],
+  "combine": null,
+  "limits": [],
+  "search_fields": "title_abstract_keywords",
+  "corpus": "all",
+  "matching": "stemmed"
+}

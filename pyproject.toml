@@ -1,0 +1,10 @@
+[project]
+name = "openalex-search-builder"
+version = "0.1.0"
+description = "Agent skill for auditable OpenAlex search development and offline Boolean drafts"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["scripts", "tests"]

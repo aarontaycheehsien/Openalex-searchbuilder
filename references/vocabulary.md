@@ -1,0 +1,3 @@
+# Vocabulary
+
+Build synonyms, spelling variants, acronyms and justified phrases for each searched concept. Query keywords/topics for candidate labels and verify returned IDs before adding restrictive filters. OpenAlex automatic keyword matching is part of keyword-enabled search, not a separate MeSH layer. Use development records only for terms rank/miss. Default matching is stemmed. Truncation requires an explicit exact-mode choice, at least three characters before the wildcard, and live revalidation. Unsupported syntax is an error. In draft mode use only supplied material/general knowledge and label vocabulary unverified.

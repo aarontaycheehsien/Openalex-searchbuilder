@@ -1,0 +1,104 @@
+[
+  {
+    "topic": "economics",
+    "synthetic": true,
+    "strategy": {
+      "blocks": [
+        {
+          "id": "a",
+          "terms": [
+            "wages"
+          ]
+        },
+        {
+          "id": "b",
+          "terms": [
+            "employment"
+          ]
+        }
+      ],
+      "combine": null,
+      "limits": [],
+      "search_fields": "title_abstract_keywords",
+      "corpus": "all",
+      "matching": "stemmed"
+    },
+    "records": [
+      {
+        "id": "https://openalex.org/W1",
+        "display_name": "wages employment",
+        "is_xpac": false
+      },
+      {
+        "id": "https://openalex.org/W2",
+        "display_name": "wages",
+        "keywords": [
+          {
+            "display_name": "employment"
+          }
+        ],
+        "is_xpac": true
+      },
+      {
+        "id": "https://openalex.org/W3",
+        "display_name": "unrelated record",
+        "is_xpac": false
+      }
+    ],
+    "expected_ids": [
+      "W1",
+      "W2"
+    ]
+  },
+  {
+    "topic": "clinical",
+    "synthetic": true,
+    "strategy": {
+      "blocks": [
+        {
+          "id": "a",
+          "terms": [
+            "exercise"
+          ]
+        },
+        {
+          "id": "b",
+          "terms": [
+            "diabetes"
+          ]
+        }
+      ],
+      "combine": null,
+      "limits": [],
+      "search_fields": "title_abstract_keywords",
+      "corpus": "all",
+      "matching": "stemmed"
+    },
+    "records": [
+      {
+        "id": "https://openalex.org/W1",
+        "display_name": "exercise diabetes",
+        "is_xpac": false
+      },
+      {
+        "id": "https://openalex.org/W2",
+        "display_name": "exercise",
+        "keywords": [
+          {
+            "display_name": "diabetes"
+          }
+        ],
+        "is_xpac": true
+      },
+      {
+        "id": "https://openalex.org/W3",
+        "display_name": "unrelated record",
+        "is_xpac": false
+      }
+    ],
+    "expected_ids": [
+      "W1",
+      "W2"
+    ]
+  }
+]

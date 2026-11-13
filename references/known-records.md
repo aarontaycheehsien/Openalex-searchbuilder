@@ -1,0 +1,3 @@
+# Known Records
+
+Seed: user-supplied known relevant works. Relevant: discovered and screened included works. Validation: held out before term mining. Benchmark: independently established eligible works from a prior review, not used for development. Screen discoveries before set admission. Keep each work in only one role. Deterministically split roughly 30% when at least ten development records are available. If protected records influence revision, remove from the protected set and reclassify as relevant. Report indexed/corpus coverage separately from relative recall; unresolved inputs stay in resolutions.json. Citation candidates are not automatically included studies.

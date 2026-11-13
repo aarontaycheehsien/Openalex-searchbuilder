@@ -1,0 +1,3 @@
+# Reporting
+
+Deliver generated query and audit verbatim, including fields, corpus, matching, filters, line counts, per-set coverage/relative recall, missing identifiers, missed works, revisions and critique. State that development recall is not independent evidence and internal critique is not formal PRESS review. Export all pages after validation, reporting actual completion and count discrepancies from export-manifest.json. Partial outputs are explicitly named. Keep narrative changes in a separate file rather than editing generated audit artifacts. Preserve dated workspace history; a changed query produces a separate export directory.

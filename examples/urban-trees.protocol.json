@@ -1,0 +1,31 @@
+{
+  "question": "How does urban tree cover influence urban heat?",
+  "mode": "draft",
+  "depth": "standard",
+  "scope_confirmed": false,
+  "concepts": [
+    {
+      "id": "trees",
+      "name": "Urban trees",
+      "role": "search",
+      "rationale": "Exposure/intervention of interest"
+    },
+    {
+      "id": "heat",
+      "name": "Urban heat",
+      "role": "search",
+      "rationale": "Defines the phenomenon; broader temperature terms should be tested in validated development"
+    }
+  ],
+  "eligibility": {
+    "include": [
+      "Studies evaluating urban tree cover and heat"
+    ],
+    "exclude": [
+      "Studies outside urban settings"
+    ]
+  },
+  "notes": [
+    "Illustrative untested strategy. No known papers or API evidence supplied."
+  ]
+}
