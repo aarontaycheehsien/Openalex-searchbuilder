@@ -110,11 +110,11 @@ search. The selected corpus is explicit in every query and diagnostic.
 ## Output and reproducibility
 
 Validated report: final-query.txt, final-query.json, audit.md, validation-manifest.json.
-Export: exports/<query-hash>/results.csv, results.ris, results.jsonl, checkpoint.sqlite3,
+Export: exports/<query-hash>/<validation-hash>/results.csv, results.ris, results.jsonl, checkpoint.sqlite3,
 and export-manifest.json. Partial files contain `.partial` in their names.
 
-Exports checkpoint each page atomically and deduplicate OpenAlex IDs. Query changes
-start a new export. CSV escapes formula-like text; JSONL preserves the original
+Exports checkpoint each page atomically and deduplicate OpenAlex IDs. Each newly validated report starts a new export, even when its query is unchanged.
+Repeated export commands for the same report resume that retrieval. CSV escapes formula-like text; JSONL preserves the original
 values. Available metadata may be incomplete, and abstracts/full text are not
 available for every record. No PDFs are downloaded. Paging completion does not
 make the changing OpenAlex index a historical snapshot; count discrepancies are
@@ -142,3 +142,7 @@ OSB_LIVE_TESTS=1 PYTHONPATH=scripts python -m unittest discover -s tests -p test
 See [evals/README.md](evals/README.md) for multidisciplinary development and held-out
 fixtures. Synthetic tests do not establish real search effectiveness. No upstream
 PubMed performance claims are carried over.
+
+## Recheck fixes
+
+See [REVIEW.md](REVIEW.md) for the second-pass findings and regression coverage.

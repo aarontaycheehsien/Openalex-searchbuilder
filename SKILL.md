@@ -123,7 +123,7 @@ The response must identify its reviewer, summarize the review, acknowledge every
 warning, and explain every finding's disposition. Open findings block delivery.
 Technical findings cannot be accepted as risks. After changes, evaluate and issue
 a new packet. Preserve earlier objections. Quick/standard/thorough allow 1/2/3
-revision packets, then a closing packet and one verification packet. Closing
+revision packets per delivery/update cycle, then a closing packet and one verification packet. Closing
 rounds address previous findings; new technical blockers still block.
 
 ## 7. Validate, deliver and export
@@ -137,8 +137,8 @@ and review. `report --diagnostic` checks without producing final artifacts.
 Deliver generated artifacts verbatim; never hand-author a validated manifest.
 Then run `export` to traverse the complete result set and produce CSV, RIS and
 JSONL. Export is automatically resumable. If it stops, give the partial status
-and rerun after the cause is fixed. Never label partial files complete. Query
-changes create a different export directory. Large retrievals consume API budget;
+and rerun after the cause is fixed. Never label partial files complete. Each newly validated report
+creates a different export directory; resume by rerunning export without rerunning report. Large retrievals consume API budget;
 report the service's actual usage and exhaustion, not a guessed free allowance.
 
 ## Updates and existing strategies

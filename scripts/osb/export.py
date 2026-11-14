@@ -75,7 +75,10 @@ def export(ws, client=None):
     client = client or Client(ws)
     query = validated['oqo']
     key = digest(query)
-    folder = ws.root / 'exports' / key
+    # Resuming the same validation is safe. A new report of the same query is a
+    # new retrieval, not permission to silently reuse last month's completed set.
+    validation_key = digest(validated)
+    folder = ws.root / 'exports' / key / validation_key
     folder.mkdir(parents=True, exist_ok=True)
     db = sqlite3.connect(folder / 'checkpoint.sqlite3')
     db.execute('create table if not exists records (id text primary key, body text not null)')
@@ -112,7 +115,7 @@ def export(ws, client=None):
         count = db.execute('select count(*) from records').fetchone()[0]
         files = render_exports(db, folder, state['complete'])
         db.close()
-    manifest = {**state, 'at': now(), 'oqo': query, 'unique_records': count,
+    manifest = {**state, 'at': now(), 'oqo': query, 'validation_sha256': validation_key, 'unique_records': count,
                 'validation_count': validated['count'], 'error': error, 'files': files,
                 'count_discrepancy': any(c != count for c in [validated['count'], *state['counts']]),
                 'note': 'Cursor traversal of a changing index, not an immutable historical snapshot. CSV formula-like cells are escaped; original values are in JSONL.'}

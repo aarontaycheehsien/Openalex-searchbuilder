@@ -118,10 +118,14 @@ def critic_packet(ws):
     depth = ws.get('protocol.json')['depth']
     revision_limit = {'quick': 1, 'standard': 2, 'thorough': 3}[depth]
     number = len(packets) + 1
-    phase = 'revision' if number <= revision_limit else 'closing' if number == revision_limit + 1 else 'verification'
-    if number > revision_limit + 2:
+    # A delivered strategy can later be updated in the same workspace. Give each
+    # post-delivery cycle its own budget, while keeping globally unique packets.
+    delivered = ws.get('last-delivery.json', {})
+    cycle_round = number - delivered.get('critic_round', 0)
+    phase = 'revision' if cycle_round <= revision_limit else 'closing' if cycle_round == revision_limit + 1 else 'verification'
+    if cycle_round > revision_limit + 2:
         raise Error('Critique round budget exhausted; deliver diagnostics rather than bypassing review')
-    packet = {'round': number, 'phase': phase, 'input_sha256': ws.fingerprint(),
+    packet = {'round': number, 'cycle_round': cycle_round, 'phase': phase, 'input_sha256': ws.fingerprint(),
               'review_sha256': e['review_sha256'], 'evaluation': e,
               'previous_review': ws.get('critic/review.json'),
               'instructions': 'PRESS-structured internal critique: scope, vocabulary, Boolean logic, field/corpus choices, limits, known misses, and reporting. Closing/verification address previous findings; technical defects always block. Do not mine protected records.',
@@ -165,15 +169,30 @@ def check_critic(ws, review=None):
         if f['kind'] == 'technical' and f['status'] != 'resolved':
             raise Error('Technical findings cannot be accepted or overridden')
     previous = packet.get('previous_review') or {}
+    prior_ids = {f['id'] for f in previous.get('findings', [])}
+    if not prior_ids <= seen:
+        raise Error('Every critique round must account for earlier findings; objections cannot be dropped')
     if packet['phase'] != 'revision':
-        prior_ids = {f['id'] for f in previous.get('findings', [])}
-        if not prior_ids <= seen:
-            raise Error('Closing/verification must account for every earlier finding')
         if any(f['id'] not in prior_ids and f['severity'] == 'must-fix' and f['kind'] != 'technical' for f in findings):
             raise Error('Closing review cannot add new subjective must-fix findings')
     return review
 
 def report(ws, client=None, diagnostic=False):
+    ws.require_online()
+    if not diagnostic:
+        old = ws.get('validation-manifest.json')
+        if old:
+            ws.put('history/delivery-' + digest(old) + '.json', old)
+            (ws.root / 'validation-manifest.json').unlink()
+    try:
+        return _report(ws, client, diagnostic)
+    except Error as exc:
+        if diagnostic:
+            return {'ok': False, 'diagnostic': True, 'blockers': [str(exc)]}
+        raise
+
+
+def _report(ws, client=None, diagnostic=False):
     ws.require_online()
     e = current_evaluation(ws)
     p = ws.get('protocol.json')
@@ -202,8 +221,10 @@ def report(ws, client=None, diagnostic=False):
         atomic(ws.root / name, text)
     manifest = {'ok': True, 'at': now(), 'input_sha256': ws.fingerprint(), 'query_sha256': digest(fresh['oqo']),
                 'oqo': fresh['oqo'], 'count': fresh['count'], 'review_sha256': fresh['review_sha256'],
+                'critic_round': review['round'],
                 'files': {name: __import__('hashlib').sha256(text.encode()).hexdigest() for name, text in outputs.items()}}
     ws.put('validation-manifest.json', manifest)
+    ws.put('last-delivery.json', manifest)
     return manifest
 
 def terms(ws, client, missed=False):

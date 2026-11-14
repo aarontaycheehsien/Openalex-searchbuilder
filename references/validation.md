@@ -1,3 +1,5 @@
 # Validation
 
 Local lint validates structure only. Live validation calls the query API and executes the final and line queries. The report requires confirmed scope, a current successful evaluation and current explained critique. It bypasses the cache, rechecks interpretation and known-record evidence, and rejects drift. Counts may change without a changed known-record interpretation; the audit records the fresh counts and time. API failures, missing response-contract fields or stale inputs cannot be accepted as risks. Final artifact hashes protect export from modified reports. Draft mode has no validation manifest. Current-query reruns never recreate old database snapshots.
+
+A new report attempt archives and invalidates the previous current manifest before validation. Failure therefore cannot leave an older delivery marked current. Diagnostic mode reports blockers without writing final artifacts or revoking an existing report.
