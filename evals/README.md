@@ -18,3 +18,5 @@ substitute synthetic-fixture scores for this process.
 
 Live integration tests are opt-in. The [screened-review pilot](screened-pilot/README.md)
 measures known-work retrieval separately, using published inclusion decisions.
+
+The [OpenAlex Alone comparison](openalex-alone/README.md) applies frozen Searchbuilder strategies and replays upstream OQL against four clinical review topics.
