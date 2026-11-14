@@ -125,9 +125,16 @@ class StrategyTests(Base):
         query = prepare(s)
         leaves = query['oqo']['filter_rows']
         self.assertEqual(len(leaves), 1)
+        self.assertEqual(leaves[0]['operator'], 'has')
         self.assertIn('(remote work productivity)', leaves[0]['value'])
         self.assertNotIn('remote AND work', leaves[0]['value'])
         self.assertEqual(leaves[0]['value'], query['boolean'])
+
+    def test_standalone_proximity_leaf(self):
+        query = prepare({'blocks': [{'id': 'topic', 'terms': ['"climate change"~3']}],
+                         'search_fields': 'title_abstract'})
+        self.assertEqual(query['oqo']['filter_rows'], [
+            {'column_id': 'title_and_abstract.search', 'operator': 'has', 'value': '"climate change"~3'}])
 
     def test_three_modes_and_corpus(self):
         s = self.ws.get('strategy.json')
@@ -209,8 +216,8 @@ class ExportTests(Base):
         self.validated(); result = export(self.ws, self.fake)
         self.assertTrue(result['complete']); self.assertEqual(result['unique_records'], 2)
         folder = Path(result['directory'])
-        self.assertIn('Zoë Example', (folder / 'results.ris').read_text())
-        self.assertIn('DO  - 10.1234/a', (folder / 'results.ris').read_text())
+        self.assertIn('Zoë Example', (folder / 'results.ris').read_text(encoding='utf-8'))
+        self.assertIn('DO  - 10.1234/a', (folder / 'results.ris').read_text(encoding='utf-8'))
         self.assertFalse(result['count_discrepancy'])
     def test_interrupt_and_resume(self):
         self.validated()

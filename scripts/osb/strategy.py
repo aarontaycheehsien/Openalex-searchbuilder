@@ -93,7 +93,7 @@ def to_filter(node, field, matching):
                         raise Error('Wildcards require at least three leading characters')
             if '~' in text:
                 raise Error('Wildcard proximity is not supported by this compiler')
-        return {'column_id': field + ('.exact' if matching == 'exact' else ''), 'value': text}
+        return {'column_id': field + ('.exact' if matching == 'exact' else ''), 'operator': 'has', 'value': text}
     if node[0] == 'not':
         result = to_filter(node[1], field, matching)
         result['is_negated'] = not result.get('is_negated', False)
@@ -128,12 +128,15 @@ def prepare(strategy):
         return (node[0], *(substitute(n, values) for n in node[1:]))
     tree = substitute(combination, blocks)
     boolean = render(substitute(combination, raw_blocks))
+    # OpenAlex validates a bare proximity phrase but errors on redundant wrappers.
+    if tree[0] == 'term':
+        boolean = render(tree)
     matching = s.get('matching', 'stemmed')
     to_filter(tree, field, matching)  # validate atoms without changing their search context
     # Send the Boolean expression as ONE scoped text search. Separating every word
     # into a distinct search filter changes stop-word and automatic keyword behavior.
     filters = [{'column_id': field + ('.exact' if matching == 'exact' else ''),
-                'value': boolean}]
+                'operator': 'has', 'value': boolean}]
     for limit in s.get('limits', []):
         if not limit.get('rationale', '').strip():
             raise Error('Each limit needs a rationale')

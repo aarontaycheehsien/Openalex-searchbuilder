@@ -21,13 +21,17 @@
    validated delivery or revoking an existing report.
 
 Each finding has a regression test in tests/test_recheck.py.
-Verification: 35 offline tests passed; 1 live test skipped (no key).
+The 2026-11-14 follow-up corrected the scoped search operator to `has` and the
+work-ID filter to `ids.openalex`. Direct API checks also exposed a proximity
+validation error with redundant parentheses. On Windows, text-mode newline
+conversion caused freshly written report files to fail their integrity check.
+Atomic writes now use UTF-8 with LF so the manifest hashes match the file bytes.
 
 ## Remaining verification limits
 
-- The OpenAlex query, field, identifier, and paging contracts have not been tested
-  against the live service. Local transport mocks and the fake corpus do not prove
-  current API compatibility or reproduce OpenAlex linguistic semantics.
+- The [verification log](IMPLEMENTATION_STATUS.md) records the live contracts
+  exercised. Compound proximity in one scoped search leaf returned HTTP 500 from
+  validation. Fresh validation remains required before delivery.
 - Multidisciplinary fixtures are synthetic plumbing tests, not real screened
   review benchmarks. Empirical search effectiveness remains unevaluated.
 - Role separation and mining commands protect current held-out sets, but the

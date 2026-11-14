@@ -1,9 +1,11 @@
 """Opt-in integration checks. Never run automatically without explicit OSB_LIVE_TESTS=1."""
+import json
 import os
 from pathlib import Path
 import tempfile
 import unittest
-from osb.api import Client
+from unittest.mock import patch
+from osb.api import ApiError, Client
 from osb.config import read_env
 from osb.core import Workspace, work_id
 from osb.strategy import prepare
@@ -11,7 +13,7 @@ from osb.workflow import evaluate, critic_packet, check_critic, report
 from osb.export import export
 
 @unittest.skipUnless(os.environ.get('OSB_LIVE_TESTS') == '1' and read_env('OPENALEX_API_KEY'),
-                     'Live integration unverified: requires OSB_LIVE_TESTS=1 and OPENALEX_API_KEY')
+                     'Requires OSB_LIVE_TESTS=1 and OPENALEX_API_KEY')
 class LiveContractTests(unittest.TestCase):
     def test_api_modes_intersection_long_query_and_small_export(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -36,9 +38,9 @@ class LiveContractTests(unittest.TestCase):
             long_s = {**strategy, 'search_fields': 'title_abstract', 'blocks': [
                 {'id': 'topic', 'terms': ['"climate change"'] * 400}]}
             long_q = prepare(long_s)['oqo']
-            self.assertGreater(len(__import__('json').dumps(long_q)), 8190)
+            self.assertGreater(len(json.dumps(long_q).encode()), 8190)
             client.search(client.validate(long_q)['oqo'])
-            strategy['limits'] = [{'filter': {'column_id': 'id', 'value': ids[-1]}, 'rationale': 'One-record export smoke test'}]
+            strategy['limits'] = [{'filter': {'column_id': 'ids.openalex', 'value': ids[-1]}, 'rationale': 'One-record export smoke test'}]
             ws.put('strategy.json', strategy)
             p = ws.get('protocol.json'); p['scope_confirmed'] = True
             p['concepts'] = [{'id': 'topic', 'name': 'climate', 'role': 'search', 'rationale': 'Contract test'}]
@@ -52,3 +54,41 @@ class LiveContractTests(unittest.TestCase):
             report(ws, client)
             out = export(ws, client)
             self.assertTrue(out['complete']); self.assertEqual(out['unique_records'], 1)
+
+    def test_wildcard_proximity_and_resumed_export(self):
+        with tempfile.TemporaryDirectory() as directory:
+            ws = Workspace.create(Path(directory) / 'live', 'Bounded cursor and syntax check')
+            client = Client(ws, fresh=True)
+            for matching, term in [('exact', 'climat*'), ('stemmed', '"climate change"~3')]:
+                strategy = {**ws.get('strategy.json'), 'search_fields': 'title_abstract',
+                            'matching': matching, 'blocks': [{'id': 'topic', 'terms': [term]}]}
+                checked = client.validate(prepare(strategy)['oqo'])
+                data = client.search(checked['oqo'], per_page=2, select='id')
+                self.assertEqual(len(data['results']), 2)
+            ids = {work_id(row['id']) for row in data['results']}
+            query = {'get_rows': 'works', 'corpus': 'all', 'filter_rows': [
+                {'join': 'or', 'filters': [{'column_id': 'ids.openalex', 'value': i}
+                                          for i in sorted(ids)]}]}
+            query = client.validate(query)['oqo']
+            # Isolate cursor traversal. The other test builds a full validated report.
+            ws.put('validation-manifest.json', {'ok': True, 'input_sha256': ws.fingerprint(),
+                                                'oqo': query, 'count': 2, 'files': {}})
+            search = client.search
+            cursors = []
+            def one_row(q, *, cursor, per_page):
+                cursors.append(cursor)
+                if len(cursors) == 2:
+                    raise ApiError('Intentional interruption before second page')
+                if len(cursors) > 4:
+                    raise ApiError('Exceeded live cursor request limit')
+                return search(q, cursor=cursor, per_page=1)
+            with patch.object(client, 'search', side_effect=one_row):
+                partial = export(ws, client)
+                self.assertFalse(partial['complete'])
+                self.assertEqual(partial['unique_records'], 1)
+                result = export(ws, client)
+            self.assertTrue(result['complete'], result['error'])
+            self.assertEqual(cursors[1], cursors[2])
+            self.assertEqual(result['unique_records'], 2)
+            rows = (Path(result['directory']) / 'results.jsonl').read_text(encoding='utf-8')
+            self.assertEqual({work_id(json.loads(row)['id']) for row in rows.splitlines()}, ids)

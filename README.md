@@ -43,8 +43,9 @@ python scripts/osb.py doctor
 
 Never commit the key. Network execution uses bearer authorization, bounded retries,
 credential-redacted logs and per-workspace cache. `OSB_CACHE=0` disables cache reads.
-Live integration is **unverified until the opt-in tests pass with your key**.
-No API key was available during initial development.
+Authenticated live checks on 2026-11-14 verified the three search field modes,
+work-ID intersections and validated export. Compound proximity expressions can
+still fail OpenAlex validation. See [verification results](IMPLEMENTATION_STATUS.md).
 
 ## Try the offline example
 

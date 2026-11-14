@@ -70,7 +70,8 @@ class Client:
                     write(cache_path, data)
                 return data
             except error.HTTPError as exc:
-                detail = self.clean(exc.read().decode('utf-8', errors='replace')[:3000])
+                with exc:
+                    detail = self.clean(exc.read().decode('utf-8', errors='replace')[:3000])
                 self.ws.log({'event': 'request_error', 'request_hash': cache_key, 'status': exc.code, 'detail': detail})
                 retry_after = exc.headers.get('Retry-After', '') if exc.headers else ''
                 budget = bool(re.search('budget|quota|daily|credit', detail, re.I))
@@ -110,7 +111,7 @@ class Client:
         found = set()
         for start in range(0, len(ids), 50):
             chunk = ids[start:start+50]
-            clause = {'join': 'or', 'filters': [{'column_id': 'id', 'value': i} for i in chunk]}
+            clause = {'join': 'or', 'filters': [{'column_id': 'ids.openalex', 'value': i} for i in chunk]}
             q = {**oqo, 'filter_rows': [*oqo.get('filter_rows', []), clause]}
             data = self.search(q, per_page=100, select='id')
             if data['meta']['count'] > len(data['results']):

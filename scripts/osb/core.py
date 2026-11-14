@@ -19,7 +19,7 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 def read(path, default=None):
-    return json.loads(Path(path).read_text()) if Path(path).exists() else default
+    return json.loads(Path(path).read_text(encoding='utf-8')) if Path(path).exists() else default
 
 def write(path, value):
     atomic(path, json.dumps(value, indent=2, ensure_ascii=False) + '\n')
@@ -29,7 +29,7 @@ def atomic(path, text):
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp = tempfile.mkstemp(dir=path.parent, prefix='.' + path.name)
     try:
-        with os.fdopen(fd, 'w', encoding='utf-8') as f:
+        with os.fdopen(fd, 'w', encoding='utf-8', newline='\n') as f:
             f.write(text)
             f.flush()
             os.fsync(f.fileno())
