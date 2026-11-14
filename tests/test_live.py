@@ -6,6 +6,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from osb.api import ApiError, Client
+from osb.cli import dispatch, parser
 from osb.config import read_env
 from osb.core import Workspace, work_id
 from osb.strategy import prepare
@@ -110,3 +111,39 @@ class LiveContractTests(unittest.TestCase):
             self.assertGreater(executed['meta']['count'], 0)
             self.assertEqual(executed['meta']['count'], posted['meta']['count'])
             self.assertEqual(executed['results'], posted['results'])
+
+            def command(*args):
+                return dispatch(parser().parse_args(['-w', str(ws.root), *args]))
+
+            # Use a known result to bound every delivered export to one work.
+            identifier = work_id(executed['results'][0]['id'])
+            configured = command('configure', '--fields', 'title_abstract', '--proximity-mode', 'oql')
+            configured['blocks'] = strategy['blocks']
+            configured['limits'] = [{'filter': {'column_id': 'ids.openalex', 'value': identifier},
+                                     'rationale': 'One-work delivery contract test'}]
+            ws.put('strategy.json', configured)
+            protocol = ws.get('protocol.json')
+            protocol['concepts'] = [{'id': 'topic', 'name': 'climate', 'role': 'search',
+                                     'rationale': 'Compound proximity contract test'}]
+            ws.put('protocol.json', protocol)
+            command('scope', '--confirm')
+            command('set', 'add', 'known', identifier)
+            evaluation = command('eval', '--fresh')
+            self.assertTrue(evaluation['ok'], evaluation.get('error'))
+            self.assertEqual(evaluation['known']['retrieved'], [identifier])
+            review = command('critic', 'packet')['response_template']
+            review.update(reviewer='automated contract test', fresh_context=False,
+                          summary='Transport and delivery check with a sampled work.')
+            ws.put('response.json', review)
+            command('critic', 'check', '--file', str(ws.root / 'response.json'))
+            manifest = command('report')
+            self.assertEqual(manifest['count'], 1)
+            oql_text = (ws.root / 'final-query.txt').read_text(encoding='utf-8').strip()
+            replay = client.request('/', {'oql': oql_text, 'per_page': 1, 'select': 'id'})
+            self.assertEqual(replay['meta']['count'], 1)
+            self.assertEqual(work_id(replay['results'][0]['id']), identifier)
+            exported = command('export')
+            self.assertTrue(exported['complete'], exported['error'])
+            self.assertEqual(exported['unique_records'], 1)
+            rows = (Path(exported['directory']) / 'results.jsonl').read_text(encoding='utf-8')
+            self.assertEqual(work_id(json.loads(rows)['id']), identifier)

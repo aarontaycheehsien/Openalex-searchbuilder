@@ -33,6 +33,14 @@ compares counts and the first three returned IDs. The follow-up suite passed
 37 offline tests and three authenticated live tests. Counts above are observations
 from the investigation and may change as OpenAlex updates.
 
+A subsequent bounded CLI workflow check configured native OQL proximity, selected
+one returned work as a seed and ID limit, ran fresh evaluation, imported a test
+critique, and generated a validated report. Posting the delivered
+`final-query.txt` back to OpenAlex yielded exactly the selected ID. The completed
+JSONL export contained that same work. The extended live regression passed in
+35.4 seconds and all 37 offline tests passed. The seed was sampled from the
+results solely to check delivery consistency.
+
 OpenAlex documents translation at `POST /query` and execution at `POST /`.
 See the [OQL API](https://help.openalex.org/api/oql/), the
 [OQL proximity grammar](https://help.openalex.org/access/oql-spec/), and the
