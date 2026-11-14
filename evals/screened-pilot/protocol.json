@@ -52,6 +52,39 @@
           }
         ]
       }
+    },
+    {
+      "dataset": "van_Dis_2020",
+      "role": "heldout",
+      "review_doi": "10.1001/jamapsychiatry.2019.3986",
+      "strategy": {
+        "search_fields": "title_abstract",
+        "corpus": "all",
+        "matching": "stemmed",
+        "blocks": [
+          {
+            "id": "therapy",
+            "terms": [
+              "\"cognitive behavioral therapy\"",
+              "\"cognitive behavioural therapy\"",
+              "CBT",
+              "\"cognitive therapy\""
+            ]
+          },
+          {
+            "id": "disorder",
+            "terms": [
+              "anxiety",
+              "phobia",
+              "panic",
+              "\"obsessive compulsive\"",
+              "posttraumatic",
+              "\"post traumatic\""
+            ]
+          }
+        ]
+      }
     }
-  ]
+  ],
+  "amendment": "Nagtegaal input lacks a DOI column. Retain as unevaluable under the DOI rule and add van Dis as replacement held-out topic before its first retrieval. Only schema and aggregate DOI availability were checked."
 }
