@@ -1,0 +1,172 @@
+{
+  "revision": "455786472c1d1c2ff3a2e121e49d19eb91d02425",
+  "cases": [
+    {
+      "topic": "diabetic_eye_screening",
+      "folder": "stansfield_pilot/audit_2026-11-02",
+      "reference_arms": [
+        "exploratory_unscreen_no_topic"
+      ],
+      "denominator": 130,
+      "strategy": {
+        "corpus": "core",
+        "search_fields": "title_abstract_keywords",
+        "matching": "stemmed",
+        "blocks": [
+          {
+            "id": "condition",
+            "terms": [
+              "diabetic retinopathy",
+              "diabetic eye",
+              "diabetic retinal",
+              "diabetes"
+            ]
+          },
+          {
+            "id": "screening",
+            "terms": [
+              "screening",
+              "surveillance",
+              "eye examination",
+              "retinal examination",
+              "teleophthalmology",
+              "teleretinal"
+            ]
+          }
+        ],
+        "limits": [
+          {
+            "filter": {
+              "column_id": "publication_year",
+              "operator": ">=",
+              "value": 2003
+            },
+            "rationale": "Match the upstream publication window"
+          },
+          {
+            "filter": {
+              "column_id": "publication_year",
+              "operator": "<=",
+              "value": 2023
+            },
+            "rationale": "Match the upstream publication window"
+          }
+        ]
+      }
+    },
+    {
+      "topic": "digital_cbt_insomnia",
+      "folder": "transfer_benchmark_2026-11-12",
+      "reference_arms": [
+        "A_fuller_embase",
+        "B_compact",
+        "C_fuller_without_trial_filter"
+      ],
+      "denominator": 29,
+      "strategy": {
+        "corpus": "core",
+        "search_fields": "title_abstract_keywords",
+        "matching": "stemmed",
+        "blocks": [
+          {
+            "id": "condition",
+            "terms": [
+              "insomnia"
+            ]
+          },
+          {
+            "id": "therapy",
+            "terms": [
+              "CBT",
+              "cognitive behavioral therapy",
+              "cognitive behavioural therapy",
+              "CBT-I"
+            ]
+          },
+          {
+            "id": "delivery",
+            "terms": [
+              "digital",
+              "internet",
+              "online",
+              "mobile",
+              "web",
+              "computer",
+              "smartphone",
+              "automated"
+            ]
+          }
+        ],
+        "limits": [
+          {
+            "filter": {
+              "column_id": "to_publication_date",
+              "value": "2024-03-31"
+            },
+            "rationale": "Match the upstream publication window"
+          }
+        ]
+      }
+    },
+    {
+      "topic": "depression_biomarkers",
+      "folder": "large_transfer_benchmark_2026-11-12",
+      "reference_arms": [
+        "A_fuller_source_union",
+        "B_compact_three_concepts"
+      ],
+      "denominator": 75,
+      "strategy": {
+        "corpus": "core",
+        "search_fields": "title_abstract_keywords",
+        "matching": "stemmed",
+        "blocks": [
+          {
+            "id": "condition",
+            "terms": [
+              "depression",
+              "depressive disorder"
+            ]
+          },
+          {
+            "id": "design",
+            "terms": [
+              "prospective",
+              "longitudinal",
+              "prediction",
+              "risk",
+              "recurrence",
+              "relapse",
+              "onset"
+            ]
+          },
+          {
+            "id": "marker",
+            "terms": [
+              "biomarker",
+              "cortisol",
+              "inflammation",
+              "neuroimaging",
+              "brain imaging",
+              "MRI",
+              "EEG",
+              "cytokine",
+              "oxidative stress",
+              "neurotrophic factor",
+              "microbiome"
+            ]
+          }
+        ],
+        "limits": [
+          {
+            "filter": {
+              "column_id": "to_publication_date",
+              "value": "2019-06-30"
+            },
+            "rationale": "Match the upstream publication window"
+          }
+        ]
+      }
+    }
+  ]
+}
