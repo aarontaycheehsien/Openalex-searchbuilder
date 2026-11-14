@@ -34,7 +34,8 @@ Atomic writes now use UTF-8 with LF so the manifest hashes match the file bytes.
   validation. Explicit native OQL proximity passed replay checks and changed
   the result count for the tested query. Fresh validation remains required.
 - Multidisciplinary fixtures are synthetic plumbing tests, not real screened
-  review benchmarks. Empirical search effectiveness remains unevaluated.
+  review benchmarks. A separate [screened-review pilot](evals/screened-pilot/README.md) records
+  the first observed relative recall and its denominator limitations.
 - Role separation and mining commands protect current held-out sets, but the
   agent must still disclose earlier exposure when establishing holdouts. The
   workspace does not prove a record has never been seen outside the tool.

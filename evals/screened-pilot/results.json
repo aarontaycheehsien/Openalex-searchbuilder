@@ -1,0 +1,1603 @@
+{
+  "Appenzeller-Herzog_2020": {
+    "dataset": "Appenzeller-Herzog_2020",
+    "source_url": "https://raw.githubusercontent.com/asreview/synergy-dataset/38b35218e4d0f99621cec5a8a25a0147bb88c654/datasets/Appenzeller-Herzog_2020/output/Appenzeller-Herzog_2020.csv",
+    "source_sha256": "456f9306b0ce1aee840ac0244f11df3b2a168aa46007a92f5dcf59916d309a69",
+    "records": [
+      {
+        "source_id": "3",
+        "doi": "https://dx.doi.org/10.1016/j.jfma.2017.05.008",
+        "id": "W2621217611",
+        "status": "resolved"
+      },
+      {
+        "source_id": "83",
+        "doi": "https://dx.doi.org/10.1007/s10545-015-9866-0",
+        "id": "W573755264",
+        "status": "resolved"
+      },
+      {
+        "source_id": "95",
+        "doi": "https://dx.doi.org/10.1016/j.jns.2015.06.010",
+        "id": "W1525689595",
+        "status": "resolved"
+      },
+      {
+        "source_id": "130",
+        "doi": "https://dx.doi.org/10.1186/1750-1172-9-41",
+        "id": "W2108765785",
+        "status": "resolved"
+      },
+      {
+        "source_id": "134",
+        "doi": "https://dx.doi.org/10.1111/ene.12348",
+        "id": "W2090882839",
+        "status": "resolved"
+      },
+      {
+        "source_id": "174",
+        "doi": "https://dx.doi.org/10.1097/MEG.0b013e328358f7da",
+        "id": "W2040469693",
+        "status": "resolved"
+      },
+      {
+        "source_id": "185",
+        "doi": "https://dx.doi.org/10.1007/s00415-005-0720-4",
+        "id": "W2044614434",
+        "status": "resolved"
+      },
+      {
+        "source_id": "220",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "244",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "290",
+        "doi": "https://dx.doi.org/10.1111/j.1478-3231.2010.02354.x",
+        "id": "W1563368366",
+        "status": "resolved"
+      },
+      {
+        "source_id": "311",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "331",
+        "doi": "https://dx.doi.org/10.1111/j.1468-1331.2009.02607.x",
+        "id": "W2161382529",
+        "status": "resolved"
+      },
+      {
+        "source_id": "382",
+        "doi": "https://dx.doi.org/10.1136/gut.2005.087262",
+        "id": "W2141060691",
+        "status": "resolved"
+      },
+      {
+        "source_id": "385",
+        "doi": "https://dx.doi.org/10.1097/01.mcg.0000225670.91722.59",
+        "id": "W2013019566",
+        "status": "resolved"
+      },
+      {
+        "source_id": "428",
+        "doi": "https://dx.doi.org/10.1007/s00535-004-1466-y",
+        "id": "W2026996728",
+        "status": "resolved"
+      },
+      {
+        "source_id": "509",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "952",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1002",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1018",
+        "doi": "https://dx.doi.org/10.1056/NEJM196802152780702",
+        "id": "W1989815568",
+        "status": "resolved"
+      },
+      {
+        "source_id": "1521",
+        "doi": "http://dx.doi.org/10.1016/j.cgh.2013.03.012",
+        "id": "W1992886088",
+        "status": "resolved"
+      },
+      {
+        "source_id": "1688",
+        "doi": "http://dx.doi.org/10.1053/j.gastro.2010.12.034",
+        "id": "W2033105955",
+        "status": "resolved"
+      },
+      {
+        "source_id": "1984",
+        "doi": "http://dx.doi.org/10.1017/S1748232107000043",
+        "id": "W2153383858",
+        "status": "resolved"
+      },
+      {
+        "source_id": "2105",
+        "doi": "http://dx.doi.org/10.1001/archneur.63.4.521",
+        "id": "W2110697645",
+        "status": "resolved"
+      },
+      {
+        "source_id": "2188",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "3249",
+        "doi": "10.1001/archneur.63.4.521",
+        "id": "W2110697645",
+        "status": "resolved"
+      },
+      {
+        "source_id": "3256",
+        "doi": "10.1017/S1748232107000043",
+        "id": "W2153383858",
+        "status": "resolved"
+      },
+      {
+        "source_id": "3263",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "3292",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "3332",
+        "doi": "http://dx.doi.org/10.1016/j.jfma.2017.05.008",
+        "id": "W2621217611",
+        "status": "resolved"
+      }
+    ],
+    "query": {
+      "get_rows": "works",
+      "corpus": "all",
+      "filter_rows": [
+        {
+          "column_id": "title_and_abstract.search",
+          "operator": "has",
+          "value": "((\"Wilson disease\") OR (\"Wilson's disease\") OR (hepatolenticular degeneration))"
+        }
+      ]
+    },
+    "runs": [
+      {
+        "count": 14861,
+        "in_corpus": [
+          "W1525689595",
+          "W1563368366",
+          "W1989815568",
+          "W1992886088",
+          "W2013019566",
+          "W2026996728",
+          "W2033105955",
+          "W2040469693",
+          "W2044614434",
+          "W2090882839",
+          "W2108765785",
+          "W2110697645",
+          "W2141060691",
+          "W2153383858",
+          "W2161382529",
+          "W2621217611",
+          "W573755264"
+        ],
+        "retrieved": [
+          "W1525689595",
+          "W1563368366",
+          "W1989815568",
+          "W1992886088",
+          "W2013019566",
+          "W2026996728",
+          "W2033105955",
+          "W2040469693",
+          "W2044614434",
+          "W2090882839",
+          "W2108765785",
+          "W2110697645",
+          "W2141060691",
+          "W2153383858",
+          "W2161382529",
+          "W2621217611",
+          "W573755264"
+        ],
+        "oql": "get works (all corpora) with (Wilson disease \"OR\" Wilson's disease \"OR\" hepatolenticular degeneration) in the title or abstract"
+      },
+      {
+        "count": 14861,
+        "in_corpus": [
+          "W1525689595",
+          "W1563368366",
+          "W1989815568",
+          "W1992886088",
+          "W2013019566",
+          "W2026996728",
+          "W2033105955",
+          "W2040469693",
+          "W2044614434",
+          "W2090882839",
+          "W2108765785",
+          "W2110697645",
+          "W2141060691",
+          "W2153383858",
+          "W2161382529",
+          "W2621217611",
+          "W573755264"
+        ],
+        "retrieved": [
+          "W1525689595",
+          "W1563368366",
+          "W1989815568",
+          "W1992886088",
+          "W2013019566",
+          "W2026996728",
+          "W2033105955",
+          "W2040469693",
+          "W2044614434",
+          "W2090882839",
+          "W2108765785",
+          "W2110697645",
+          "W2141060691",
+          "W2153383858",
+          "W2161382529",
+          "W2621217611",
+          "W573755264"
+        ],
+        "oql": "get works (all corpora) with (Wilson disease \"OR\" Wilson's disease \"OR\" hepatolenticular degeneration) in the title or abstract"
+      },
+      {
+        "count": 14861,
+        "in_corpus": [
+          "W1525689595",
+          "W1563368366",
+          "W1989815568",
+          "W1992886088",
+          "W2013019566",
+          "W2026996728",
+          "W2033105955",
+          "W2040469693",
+          "W2044614434",
+          "W2090882839",
+          "W2108765785",
+          "W2110697645",
+          "W2141060691",
+          "W2153383858",
+          "W2161382529",
+          "W2621217611",
+          "W573755264"
+        ],
+        "retrieved": [
+          "W1525689595",
+          "W1563368366",
+          "W1989815568",
+          "W1992886088",
+          "W2013019566",
+          "W2026996728",
+          "W2033105955",
+          "W2040469693",
+          "W2044614434",
+          "W2090882839",
+          "W2108765785",
+          "W2110697645",
+          "W2141060691",
+          "W2153383858",
+          "W2161382529",
+          "W2621217611",
+          "W573755264"
+        ],
+        "oql": "get works (all corpora) with (Wilson disease \"OR\" Wilson's disease \"OR\" hepatolenticular degeneration) in the title or abstract"
+      }
+    ]
+  },
+  "Nagtegaal_2019": {
+    "dataset": "Nagtegaal_2019",
+    "source_url": "https://raw.githubusercontent.com/asreview/synergy-dataset/38b35218e4d0f99621cec5a8a25a0147bb88c654/datasets/Nagtegaal_2019/output/Nagtegaal_2019.csv",
+    "source_sha256": "abfbdb973aa125f26ce872a5193c931d0690f7fe2e1fb75551de9c0acecd200f",
+    "records": [
+      {
+        "source_id": "26",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "31",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "38",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "40",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "41",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "42",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "81",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "82",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "85",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "86",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "103",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "116",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "164",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "210",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "211",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "227",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "261",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "288",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "370",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "378",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "412",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "414",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "429",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "432",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "435",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "436",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "456",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "479",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "487",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "498",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "576",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "605",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "607",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "621",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "628",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "671",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "675",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "676",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "690",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "691",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "696",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "709",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "712",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "764",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "805",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "816",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "889",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "916",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "957",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "958",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "960",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "966",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1006",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1007",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1010",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1013",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1033",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1034",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1047",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1064",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1084",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1124",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1127",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1134",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1139",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1143",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1210",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1289",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1290",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1315",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1322",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1349",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1395",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1414",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1442",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1453",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1485",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1496",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1525",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1533",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1534",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1537",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1551",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1757",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1761",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1764",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1766",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1772",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1782",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1783",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1785",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1786",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1802",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1946",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1947",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1950",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1956",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1961",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1962",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1963",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "1980",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      }
+    ],
+    "query": {
+      "get_rows": "works",
+      "corpus": "all",
+      "filter_rows": [
+        {
+          "column_id": "title_and_abstract.search",
+          "operator": "has",
+          "value": "(((nudge) OR (nudging) OR (\"choice architecture\")) AND ((healthcare) OR (\"health care\") OR (clinical) OR (physician) OR (clinician) OR (hospital)))"
+        }
+      ]
+    },
+    "runs": []
+  },
+  "van_Dis_2020": {
+    "dataset": "van_Dis_2020",
+    "source_url": "https://raw.githubusercontent.com/asreview/synergy-dataset/38b35218e4d0f99621cec5a8a25a0147bb88c654/datasets/van_Dis_2020/output/van_Dis_2020.csv",
+    "source_sha256": "394211b15e3830eb7237799e8a894ed8ef93793733366c355fc8e6615c84d15c",
+    "records": [
+      {
+        "source_id": "1",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "2",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "3",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "4",
+        "doi": "10.1192/bjp.bp.108.060996",
+        "id": "W2026629696",
+        "status": "resolved"
+      },
+      {
+        "source_id": "5",
+        "doi": "10.1016/j.jad.2017.08.014",
+        "id": "W2749606909",
+        "status": "resolved"
+      },
+      {
+        "source_id": "6",
+        "doi": "10.1016/j.janxdis.2016.07.010",
+        "id": "W2487898614",
+        "status": "resolved"
+      },
+      {
+        "source_id": "7",
+        "doi": "http://dx.doi.org/10.1002/da.22645",
+        "id": "W2617965641",
+        "status": "resolved"
+      },
+      {
+        "source_id": "8",
+        "doi": "10.1037/a0023822",
+        "id": "W2039669516",
+        "status": "resolved"
+      },
+      {
+        "source_id": "9",
+        "doi": "10.1002/jts.22117",
+        "id": "W2490084511",
+        "status": "resolved"
+      },
+      {
+        "source_id": "10",
+        "doi": "10.1080/13607863.2016.1222349",
+        "id": "W2516067002",
+        "status": "resolved"
+      },
+      {
+        "source_id": "11",
+        "doi": "10.1016/j.brat.2014.10.005",
+        "id": "W2070578705",
+        "status": "resolved"
+      },
+      {
+        "source_id": "12",
+        "doi": "10.1080/15299732.2016.1205704",
+        "id": "W2469001318",
+        "status": "resolved"
+      },
+      {
+        "source_id": "13",
+        "doi": "10.1016/j.jagp.2017.05.013",
+        "id": "W2596256176",
+        "status": "resolved"
+      },
+      {
+        "source_id": "14",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "15",
+        "doi": "10.1016/j.invent.2014.08.002",
+        "id": "W2080388003",
+        "status": "resolved"
+      },
+      {
+        "source_id": "16",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "17",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "18",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "19",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "20",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "21",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "22",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "23",
+        "doi": "10.1176/appi.ajp.158.12.1993",
+        "id": "W2109042404",
+        "status": "resolved"
+      },
+      {
+        "source_id": "24",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "25",
+        "doi": "10.1016/j.ajem.2010.06.027",
+        "id": "W2072607498",
+        "status": "resolved"
+      },
+      {
+        "source_id": "26",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "27",
+        "doi": "10.1016/j.brat.2009.11.013",
+        "id": "W2028132513",
+        "status": "resolved"
+      },
+      {
+        "source_id": "28",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "29",
+        "doi": "10.1037/a0020508",
+        "id": "W2132781604",
+        "status": "resolved"
+      },
+      {
+        "source_id": "30",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "31",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "32",
+        "doi": "10.1002/da.20003",
+        "id": "W2167003231",
+        "status": "resolved"
+      },
+      {
+        "source_id": "33",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "34",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "35",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "36",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "37",
+        "doi": "10.1016/j.brat.2011.01.005",
+        "id": "W2071684548",
+        "status": "resolved"
+      },
+      {
+        "source_id": "38",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "39",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "40",
+        "doi": "10.1177/01454455970214003",
+        "id": "W2144718402",
+        "status": "resolved"
+      },
+      {
+        "source_id": "41",
+        "doi": "10.1016/j.beth.2008.12.004",
+        "id": "W2002917577",
+        "status": "resolved"
+      },
+      {
+        "source_id": "42",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "43",
+        "doi": "10.1001/jamapsychiatry.2014.2637",
+        "id": "W2120574168",
+        "status": "resolved"
+      },
+      {
+        "source_id": "44",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "45",
+        "doi": "10.1016/j.brat.2013.07.002",
+        "id": "W2058632075",
+        "status": "resolved"
+      },
+      {
+        "source_id": "46",
+        "doi": "10.1001/jama.2009.458",
+        "id": "W2011332574",
+        "status": "resolved"
+      },
+      {
+        "source_id": "47",
+        "doi": "10.1016/j.brat.2006.01.001",
+        "id": "W2053295259",
+        "status": "resolved"
+      },
+      {
+        "source_id": "48",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "49",
+        "doi": "10.1080/10503307.2011.581707",
+        "id": "W2052155448",
+        "status": "resolved"
+      },
+      {
+        "source_id": "50",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "51",
+        "doi": "10.1037/0022-006X.72.4.579",
+        "id": "W2161634282",
+        "status": "resolved"
+      },
+      {
+        "source_id": "52",
+        "doi": "10.4088/JCP.09m05682blu",
+        "id": "W2080618163",
+        "status": "resolved"
+      },
+      {
+        "source_id": "53",
+        "doi": "10.1037/0022-006X.76.2.259",
+        "id": "W2067693906",
+        "status": "resolved"
+      },
+      {
+        "source_id": "54",
+        "doi": "10.1037/0022-006X.74.5.898",
+        "id": "W2146331719",
+        "status": "resolved"
+      },
+      {
+        "source_id": "55",
+        "doi": "10.1017/S1352465811000506",
+        "id": "W2108741273",
+        "status": "resolved"
+      },
+      {
+        "source_id": "56",
+        "doi": "10.1037/a0016227",
+        "id": "W2134833347",
+        "status": "resolved"
+      },
+      {
+        "source_id": "57",
+        "doi": "10.1023/A:1007793803627",
+        "id": "W2104595537",
+        "status": "resolved"
+      },
+      {
+        "source_id": "58",
+        "doi": "10.1177/0886260507313967",
+        "id": "W2170717232",
+        "status": "resolved"
+      },
+      {
+        "source_id": "59",
+        "doi": "10.1016/j.genhosppsych.2015.04.007",
+        "id": "W2080572198",
+        "status": "resolved"
+      },
+      {
+        "source_id": "60",
+        "doi": "10.1176/appi.ajp.2013.13040552",
+        "id": "W2101457117",
+        "status": "resolved"
+      },
+      {
+        "source_id": "61",
+        "doi": "10.1001/archpsyc.60.10.1024",
+        "id": "W2152937446",
+        "status": "resolved"
+      },
+      {
+        "source_id": "62",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "63",
+        "doi": "10.1200/JCO.2009.26.8722",
+        "id": "W2111471105",
+        "status": "resolved"
+      },
+      {
+        "source_id": "64",
+        "doi": "10.1159/000112887",
+        "id": "W2065379414",
+        "status": "resolved"
+      },
+      {
+        "source_id": "65",
+        "doi": "10.1001/jamapsychiatry.2015.1154",
+        "id": "W1872633687",
+        "status": "resolved"
+      },
+      {
+        "source_id": "66",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "67",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "68",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "69",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "70",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "71",
+        "doi": "10.1159/000339371",
+        "id": "W2031774431",
+        "status": "resolved"
+      },
+      {
+        "source_id": "72",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      },
+      {
+        "source_id": "73",
+        "doi": "",
+        "id": null,
+        "status": "no_doi"
+      }
+    ],
+    "query": {
+      "get_rows": "works",
+      "corpus": "all",
+      "filter_rows": [
+        {
+          "column_id": "title_and_abstract.search",
+          "operator": "has",
+          "value": "(((\"cognitive behavioral therapy\") OR (\"cognitive behavioural therapy\") OR (CBT) OR (\"cognitive therapy\")) AND ((anxiety) OR (phobia) OR (panic) OR (\"obsessive compulsive\") OR (posttraumatic) OR (\"post traumatic\")))"
+        }
+      ]
+    },
+    "runs": [
+      {
+        "count": 36897,
+        "in_corpus": [
+          "W1872633687",
+          "W2002917577",
+          "W2011332574",
+          "W2026629696",
+          "W2028132513",
+          "W2031774431",
+          "W2039669516",
+          "W2052155448",
+          "W2053295259",
+          "W2058632075",
+          "W2065379414",
+          "W2067693906",
+          "W2070578705",
+          "W2071684548",
+          "W2072607498",
+          "W2080388003",
+          "W2080572198",
+          "W2080618163",
+          "W2101457117",
+          "W2104595537",
+          "W2108741273",
+          "W2109042404",
+          "W2111471105",
+          "W2120574168",
+          "W2132781604",
+          "W2134833347",
+          "W2144718402",
+          "W2146331719",
+          "W2152937446",
+          "W2161634282",
+          "W2167003231",
+          "W2170717232",
+          "W2469001318",
+          "W2487898614",
+          "W2490084511",
+          "W2516067002",
+          "W2596256176",
+          "W2617965641",
+          "W2749606909"
+        ],
+        "retrieved": [
+          "W1872633687",
+          "W2002917577",
+          "W2011332574",
+          "W2031774431",
+          "W2065379414",
+          "W2067693906",
+          "W2070578705",
+          "W2071684548",
+          "W2072607498",
+          "W2101457117",
+          "W2108741273",
+          "W2109042404",
+          "W2111471105",
+          "W2152937446",
+          "W2161634282",
+          "W2516067002",
+          "W2596256176",
+          "W2617965641",
+          "W2749606909"
+        ],
+        "oql": "get works (all corpora) with (cognitive behavioral therapy \"OR\" cognitive behavioural therapy \"OR\" CBT \"OR\" cognitive therapy \"AND\" anxiety \"OR\" phobia \"OR\" panic \"OR\" obsessive compulsive \"OR\" posttraumatic \"OR\" post traumatic) in the title or abstract"
+      },
+      {
+        "count": 36897,
+        "in_corpus": [
+          "W1872633687",
+          "W2002917577",
+          "W2011332574",
+          "W2026629696",
+          "W2028132513",
+          "W2031774431",
+          "W2039669516",
+          "W2052155448",
+          "W2053295259",
+          "W2058632075",
+          "W2065379414",
+          "W2067693906",
+          "W2070578705",
+          "W2071684548",
+          "W2072607498",
+          "W2080388003",
+          "W2080572198",
+          "W2080618163",
+          "W2101457117",
+          "W2104595537",
+          "W2108741273",
+          "W2109042404",
+          "W2111471105",
+          "W2120574168",
+          "W2132781604",
+          "W2134833347",
+          "W2144718402",
+          "W2146331719",
+          "W2152937446",
+          "W2161634282",
+          "W2167003231",
+          "W2170717232",
+          "W2469001318",
+          "W2487898614",
+          "W2490084511",
+          "W2516067002",
+          "W2596256176",
+          "W2617965641",
+          "W2749606909"
+        ],
+        "retrieved": [
+          "W1872633687",
+          "W2002917577",
+          "W2011332574",
+          "W2031774431",
+          "W2065379414",
+          "W2067693906",
+          "W2070578705",
+          "W2071684548",
+          "W2072607498",
+          "W2101457117",
+          "W2108741273",
+          "W2109042404",
+          "W2111471105",
+          "W2152937446",
+          "W2161634282",
+          "W2516067002",
+          "W2596256176",
+          "W2617965641",
+          "W2749606909"
+        ],
+        "oql": "get works (all corpora) with (cognitive behavioral therapy \"OR\" cognitive behavioural therapy \"OR\" CBT \"OR\" cognitive therapy \"AND\" anxiety \"OR\" phobia \"OR\" panic \"OR\" obsessive compulsive \"OR\" posttraumatic \"OR\" post traumatic) in the title or abstract"
+      },
+      {
+        "count": 36897,
+        "in_corpus": [
+          "W1872633687",
+          "W2002917577",
+          "W2011332574",
+          "W2026629696",
+          "W2028132513",
+          "W2031774431",
+          "W2039669516",
+          "W2052155448",
+          "W2053295259",
+          "W2058632075",
+          "W2065379414",
+          "W2067693906",
+          "W2070578705",
+          "W2071684548",
+          "W2072607498",
+          "W2080388003",
+          "W2080572198",
+          "W2080618163",
+          "W2101457117",
+          "W2104595537",
+          "W2108741273",
+          "W2109042404",
+          "W2111471105",
+          "W2120574168",
+          "W2132781604",
+          "W2134833347",
+          "W2144718402",
+          "W2146331719",
+          "W2152937446",
+          "W2161634282",
+          "W2167003231",
+          "W2170717232",
+          "W2469001318",
+          "W2487898614",
+          "W2490084511",
+          "W2516067002",
+          "W2596256176",
+          "W2617965641",
+          "W2749606909"
+        ],
+        "retrieved": [
+          "W1872633687",
+          "W2002917577",
+          "W2011332574",
+          "W2031774431",
+          "W2065379414",
+          "W2067693906",
+          "W2070578705",
+          "W2071684548",
+          "W2072607498",
+          "W2101457117",
+          "W2108741273",
+          "W2109042404",
+          "W2111471105",
+          "W2152937446",
+          "W2161634282",
+          "W2516067002",
+          "W2596256176",
+          "W2617965641",
+          "W2749606909"
+        ],
+        "oql": "get works (all corpora) with (cognitive behavioral therapy \"OR\" cognitive behavioural therapy \"OR\" CBT \"OR\" cognitive therapy \"AND\" anxiety \"OR\" phobia \"OR\" panic \"OR\" obsessive compulsive \"OR\" posttraumatic \"OR\" post traumatic) in the title or abstract"
+      }
+    ]
+  }
+}

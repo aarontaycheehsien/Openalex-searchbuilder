@@ -16,5 +16,5 @@ unseen recall and corpus coverage separately. Keep unsuccessful attempts. If a
 held-out topic informs a change, retire it from independent evaluation. Do not
 substitute synthetic-fixture scores for this process.
 
-Live integration tests are opt-in and separate from effectiveness evaluation. No
-live or empirical search performance results are claimed by this release.
+Live integration tests are opt-in. The [screened-review pilot](screened-pilot/README.md)
+measures known-work retrieval separately, using published inclusion decisions.

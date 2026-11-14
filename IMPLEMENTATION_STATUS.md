@@ -46,7 +46,8 @@ See the [OQL API](https://help.openalex.org/api/oql/), the
 [OQL proximity grammar](https://help.openalex.org/access/oql-spec/), and the
 [phrase-slop search documentation](https://help.openalex.org/api/searching/).
 
-These checks establish API behavior for the tested queries. Measuring recall or
-comparing search effectiveness still requires independently screened multidisciplinary
-benchmarks. See [evaluation fixtures](evals/README.md), [review findings](REVIEW.md)
+These checks establish API behavior for the tested queries. The subsequent
+[screened-review pilot](evals/screened-pilot/README.md) reports development and
+held-out retrieval for independently included, DOI-resolved works. Broader
+multidisciplinary performance remains unevaluated. See [evaluation fixtures](evals/README.md), [review findings](REVIEW.md)
 and the [test commands](README.md#tests).
