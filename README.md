@@ -44,8 +44,18 @@ python scripts/osb.py doctor
 Never commit the key. Network execution uses bearer authorization, bounded retries,
 credential-redacted logs and per-workspace cache. `OSB_CACHE=0` disables cache reads.
 Authenticated live checks on 2026-11-14 verified the three search field modes,
-work-ID intersections and validated export. Compound proximity expressions can
-still fail OpenAlex validation. See [verification results](IMPLEMENTATION_STATUS.md).
+work-ID intersections and validated export. For a Boolean search that combines
+proximity with other terms, select native OQL proximity explicitly:
+
+```bash
+python scripts/osb.py -w runs/my-review configure --proximity-mode oql
+python scripts/osb.py -w runs/my-review eval --fresh
+```
+
+In this mode, `"climate change"~3 OR climatology` uses OpenAlex's native
+*within 3 words of each other* operation. The default `phrase_slop` mode uses
+a shared budget of positional moves for a quoted phrase. Changing modes can
+change retrieval. See the [live comparison](IMPLEMENTATION_STATUS.md#compound-proximity).
 
 ## Try the offline example
 

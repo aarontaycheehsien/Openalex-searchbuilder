@@ -96,7 +96,10 @@ The global matching mode is stemmed by default. Wildcards require explicitly
 selecting exact matching and reassessing all terms; the tool never silently
 switches morphology. Use three leading characters before a wildcard. Phrase
 proximity is `"climate change"~5`. Unsupported syntax fails rather than translating
-PubMed tags or silently weakening the expression.
+PubMed tags or silently weakening the expression. For compound proximity the
+single-filter phrase-slop form can fail OpenAlex validation. To choose native
+OQL word windows, use `configure --proximity-mode oql`, record the choice and
+re-evaluate retrieval. See the comparison in IMPLEMENTATION_STATUS.md.
 
 ## 5. Evaluate and revise
 

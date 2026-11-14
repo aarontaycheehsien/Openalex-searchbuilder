@@ -92,3 +92,21 @@ class LiveContractTests(unittest.TestCase):
             self.assertEqual(result['unique_records'], 2)
             rows = (Path(result['directory']) / 'results.jsonl').read_text(encoding='utf-8')
             self.assertEqual({work_id(json.loads(row)['id']) for row in rows.splitlines()}, ids)
+
+    def test_compound_native_proximity_matches_posted_oql(self):
+        with tempfile.TemporaryDirectory() as directory:
+            ws = Workspace.create(Path(directory) / 'live', 'Compound proximity comparison')
+            client = Client(ws, fresh=True)
+            oql = ('get works (all corpora) with ((climate and change within 3 words '
+                   'of each other) OR climatology) in the title or abstract')
+            expected = client.request('/query', {'oql': oql})
+            strategy = {'search_fields': 'title_abstract', 'proximity_mode': 'oql',
+                        'blocks': [{'id': 'topic', 'terms': ['"climate change"~3', 'climatology']}]}
+            actual = client.validate(prepare(strategy)['oqo'])
+            self.assertEqual(actual['oqo'], expected['oqo'])
+            self.assertEqual(actual['oql'], expected['oql'])
+            posted = client.request('/', {'oql': actual['oql'], 'per_page': 3, 'select': 'id'})
+            executed = client.search(actual['oqo'], per_page=3, select='id')
+            self.assertGreater(executed['meta']['count'], 0)
+            self.assertEqual(executed['meta']['count'], posted['meta']['count'])
+            self.assertEqual(executed['results'], posted['results'])

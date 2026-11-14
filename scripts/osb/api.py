@@ -90,7 +90,18 @@ class Client:
                 raise ApiError('OpenAlex returned invalid JSON') from None
 
     def validate(self, oqo):
-        data = self.request('/query', {'oqo': oqo})
+        try:
+            data = self.request('/query', {'oqo': oqo})
+        except ApiError as exc:
+            if exc.status == 500 and any(
+                '.search' in row.get('column_id', '') and re.search(r'"~\d+', str(row.get('value', '')))
+                and not re.fullmatch(r'"[^"]+"~\d+', str(row.get('value', '')))
+                for row in oqo.get('filter_rows', [])
+            ):
+                raise ApiError('OpenAlex HTTP 500 validating compound phrase slop. To use native '
+                               'OQL proximity (which can change retrieval), run configure '
+                               '--proximity-mode oql and evaluate again.', 500) from exc
+            raise
         if data.get('validation', {}).get('valid') is not True or not data.get('oqo') or not data.get('oql'):
             raise ApiError('OpenAlex query contract not satisfied: missing valid validation, canonical OQO or OQL')
         return data

@@ -31,7 +31,8 @@ Atomic writes now use UTF-8 with LF so the manifest hashes match the file bytes.
 
 - The [verification log](IMPLEMENTATION_STATUS.md) records the live contracts
   exercised. Compound proximity in one scoped search leaf returned HTTP 500 from
-  validation. Fresh validation remains required before delivery.
+  validation. Explicit native OQL proximity passed replay checks and changed
+  the result count for the tested query. Fresh validation remains required.
 - Multidisciplinary fixtures are synthetic plumbing tests, not real screened
   review benchmarks. Empirical search effectiveness remains unevaluated.
 - Role separation and mining commands protect current held-out sets, but the

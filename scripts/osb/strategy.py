@@ -12,7 +12,7 @@ FIELDS = {'title_abstract_keywords': 'title_abstract_keywords.search',
           'title_abstract': 'title_and_abstract.search', 'fulltext': 'fulltext.search'}
 TOKEN = re.compile(r'\s*("(?:[^"\\]|\\.)*"(?:~\d+)?|\(|\)|[^\s()"]+)')
 
-def parse(text):
+def parse(text, *, preserve_word_runs=False):
     if not isinstance(text, str) or not text.strip():
         raise Error('Empty expression')
     tokens, pos = [], 0
@@ -21,6 +21,18 @@ def parse(text):
         if not m:
             raise Error('Unbalanced quotation marks')
         tokens.append(m.group(1)); pos = m.end()
+    if preserve_word_runs:
+        # In native OQL a run of bare words forms one search operand.
+        grouped = []
+        previous_bare = False
+        for token in tokens:
+            bare = token not in {'(', ')'} and token.upper() not in {'AND', 'OR', 'NOT'} and not token.startswith('"')
+            if bare and previous_bare:
+                grouped[-1] += ' ' + token
+            else:
+                grouped.append(token)
+            previous_bare = bare
+        tokens = grouped
     depth = 0
     for token in tokens:
         depth += (token == '(') - (token == ')')
@@ -80,7 +92,7 @@ def render(node):
         return 'NOT (' + render(node[1]) + ')'
     return '(' + (' ' + node[0].upper() + ' ').join(render(n) for n in node[1:]) + ')'
 
-def to_filter(node, field, matching):
+def to_filter(node, field, matching, *, native=False, negated=False):
     if node[0] == 'term':
         text = node[1]
         if '*' in text or '?' in text:
@@ -93,12 +105,24 @@ def to_filter(node, field, matching):
                         raise Error('Wildcards require at least three leading characters')
             if '~' in text:
                 raise Error('Wildcard proximity is not supported by this compiler')
-        return {'column_id': field + ('.exact' if matching == 'exact' else ''), 'operator': 'has', 'value': text}
+        if native and '~' in text:
+            phrase, distance = text[1:].rsplit('"~', 1)
+            words = phrase.split()
+            if len(words) < 2:
+                raise Error('Native OQL proximity requires at least two words')
+            # OQO emitted by POST /query for an OQL "within N words" operand.
+            text = f'"{words[0]}"~{distance}~' + '~'.join(f'"{word}"' for word in words[1:])
+        leaf = {'column_id': field + ('.exact' if matching == 'exact' else ''), 'operator': 'has', 'value': text}
+        if negated:
+            leaf['is_negated'] = True
+        return leaf
     if node[0] == 'not':
-        result = to_filter(node[1], field, matching)
-        result['is_negated'] = not result.get('is_negated', False)
-        return result
-    return {'join': node[0], 'filters': [to_filter(n, field, matching) for n in node[1:]]}
+        return to_filter(node[1], field, matching, native=native, negated=not negated)
+    join = node[0]
+    if negated:
+        join = 'or' if join == 'and' else 'and'
+    return {'join': join, 'filters': [to_filter(n, field, matching, native=native, negated=negated)
+                                      for n in node[1:]]}
 
 def prepare(strategy):
     s = deepcopy(strategy)
@@ -107,6 +131,9 @@ def prepare(strategy):
         raise Error('Invalid search_fields or corpus')
     if s.get('matching', 'stemmed') not in {'stemmed', 'exact'}:
         raise Error('matching must be stemmed or exact')
+    proximity_mode = s.get('proximity_mode', 'phrase_slop')
+    if proximity_mode not in {'phrase_slop', 'oql'}:
+        raise Error('proximity_mode must be phrase_slop or oql')
     blocks, raw_blocks = {}, {}
     for b in s.get('blocks', []):
         key = b.get('id', '')
@@ -126,17 +153,22 @@ def prepare(strategy):
                 raise Error('Unknown block in combine: ' + node[1])
             return values[node[1]]
         return (node[0], *(substitute(n, values) for n in node[1:]))
-    tree = substitute(combination, blocks)
     boolean = render(substitute(combination, raw_blocks))
+    native = proximity_mode == 'oql' and '~' in boolean
+    if native:
+        blocks = {key: parse(node[1], preserve_word_runs=True) for key, node in raw_blocks.items()}
+    tree = substitute(combination, blocks)
     # OpenAlex validates a bare proximity phrase but errors on redundant wrappers.
     if tree[0] == 'term':
         boolean = render(tree)
     matching = s.get('matching', 'stemmed')
-    to_filter(tree, field, matching)  # validate atoms without changing their search context
+    structured = to_filter(tree, field, matching, native=native)
     # Send the Boolean expression as ONE scoped text search. Separating every word
     # into a distinct search filter changes stop-word and automatic keyword behavior.
     filters = [{'column_id': field + ('.exact' if matching == 'exact' else ''),
                 'operator': 'has', 'value': boolean}]
+    if native:
+        filters = [structured]
     for limit in s.get('limits', []):
         if not limit.get('rationale', '').strip():
             raise Error('Each limit needs a rationale')

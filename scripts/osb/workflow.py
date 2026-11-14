@@ -18,11 +18,13 @@ def draft(ws):
     issues = lint(s, p)
     data = {'status': 'untested', 'label': LABEL, 'input_sha256': ws.fingerprint(),
             'search_fields': s['search_fields'], 'matching': s['matching'], 'corpus': s['corpus'],
+            'proximity_mode': s.get('proximity_mode', 'phrase_slop'),
             'boolean': query['boolean'], 'request': {'method': 'POST', 'url': 'https://api.openalex.org/',
             'body': {'oqo': query['oqo']}}, 'local_warnings': issues}
     ws.put('draft-query.json', data)
     atomic(ws.root / 'draft-query.txt', LABEL + '\n\n' + query['boolean'] + '\n\n' +
            f"Fields: {s['search_fields']}\nMatching: {s['matching']}\nCorpus: {s['corpus']}\n" +
+           f"Proximity mode: {data['proximity_mode']}\n" +
            'Limits: ' + json.dumps(s['limits'], ensure_ascii=False) + '\n')
     atomic(ws.root / 'draft-notes.md', '# Untested draft\n\n' + LABEL +
            '\n\nNo API requests, vocabulary verification, retrieval testing or live validation were performed. '

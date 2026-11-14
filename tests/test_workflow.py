@@ -136,6 +136,25 @@ class StrategyTests(Base):
         self.assertEqual(query['oqo']['filter_rows'], [
             {'column_id': 'title_and_abstract.search', 'operator': 'has', 'value': '"climate change"~3'}])
 
+    def test_native_proximity_preserves_field_limits_and_word_runs(self):
+        strategy = {'proximity_mode': 'oql', 'corpus': 'expansion', 'matching': 'exact',
+                    'blocks': [{'id': 'a', 'terms': ['"red blue green"~4']},
+                               {'id': 'b', 'terms': ['forest ecology', 'climatology']}],
+                    'combine': 'a NOT b', 'limits': [{'filter': {'column_id': 'publication_year',
+                    'value': 2024}, 'rationale': 'Regression fixture'}]}
+        query = prepare(strategy)['oqo']
+        tree, limit = query['filter_rows']
+        self.assertEqual(query['corpus'], 'expansion')
+        self.assertEqual(limit, strategy['limits'][0]['filter'])
+        first, exclusions = tree['filters']
+        self.assertEqual(first, {'column_id': 'title_abstract_keywords.search.exact',
+                                 'operator': 'has', 'value': '"red"~4~"blue"~"green"'})
+        self.assertEqual(exclusions['join'], 'and')
+        self.assertEqual([n['value'] for n in exclusions['filters']], ['forest ecology', 'climatology'])
+        self.assertTrue(all(n['is_negated'] for n in exclusions['filters']))
+        del strategy['proximity_mode']
+        self.assertIn('"red blue green"~4', prepare(strategy)['oqo']['filter_rows'][0]['value'])
+
     def test_three_modes_and_corpus(self):
         s = self.ws.get('strategy.json')
         for mode, count in [('title_abstract', 1), ('title_abstract_keywords', 2), ('fulltext', 3)]:

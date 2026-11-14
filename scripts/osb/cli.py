@@ -24,6 +24,7 @@ def parser():
         sub.add_parser(c)
     q = sub.add_parser('mode'); q.add_argument('value', choices=['draft', 'validated'])
     q = sub.add_parser('configure'); q.add_argument('--fields', choices=list(FIELDS)); q.add_argument('--corpus', choices=['core', 'all', 'expansion']); q.add_argument('--matching', choices=['stemmed', 'exact'])
+    q.add_argument('--proximity-mode', choices=['phrase_slop', 'oql'])
     q = sub.add_parser('scope'); q.add_argument('--confirm', action='store_true')
     q = sub.add_parser('eval'); q.add_argument('--note', default=''); q.add_argument('--fresh', action='store_true')
     q = sub.add_parser('report'); q.add_argument('--diagnostic', action='store_true')
@@ -77,7 +78,7 @@ def run(ws, a):
         return {'ok': True, 'mode': a.value, 'note': 'Previous draft files remain; evaluations must match current inputs'}
     if cmd == 'configure':
         s = ws.get('strategy.json')
-        for key, value in [('search_fields', a.fields), ('corpus', a.corpus), ('matching', a.matching)]:
+        for key, value in [('search_fields', a.fields), ('corpus', a.corpus), ('matching', a.matching), ('proximity_mode', a.proximity_mode)]:
             if value is not None: s[key] = value
         ws.put('strategy.json', s); return s
     if cmd == 'scope':
