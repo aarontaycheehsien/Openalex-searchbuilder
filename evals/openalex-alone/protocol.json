@@ -168,5 +168,63 @@
         ]
       }
     }
-  ]
+  ],
+  "exercise": {
+    "folder": "exercise_transfer_benchmark_2026-11-12",
+    "denominator": 218,
+    "source_url": "https://osf.io/download/tr6g5/",
+    "sha256": "602594f3e97e125478319a81fe471d550aed8cbed25305179294b4a6285e47c2",
+    "mapping": "DOI-exact subset only. Report lower bounds on all 218, without declaring other rows missing from OpenAlex.",
+    "reference_arms": [
+      "A_fuller_source_concepts",
+      "B_compact_three_concepts"
+    ],
+    "strategy": {
+      "search_fields": "title_abstract_keywords",
+      "corpus": "core",
+      "blocks": [
+        {
+          "id": "condition",
+          "terms": [
+            "depression",
+            "depressive disorder",
+            "dysthymia"
+          ]
+        },
+        {
+          "id": "activity",
+          "terms": [
+            "exercise",
+            "physical activity",
+            "aerobic",
+            "resistance training",
+            "walking",
+            "yoga",
+            "tai chi",
+            "cycling",
+            "running"
+          ]
+        },
+        {
+          "id": "design",
+          "terms": [
+            "randomized",
+            "randomised",
+            "trial",
+            "controlled",
+            "placebo"
+          ]
+        }
+      ],
+      "limits": [
+        {
+          "filter": {
+            "column_id": "to_publication_date",
+            "value": "2023-06-03"
+          },
+          "rationale": "Upstream search cutoff"
+        }
+      ]
+    }
+  }
 }
