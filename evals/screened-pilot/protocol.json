@@ -1,0 +1,57 @@
+{
+  "source_commit": "38b35218e4d0f99621cec5a8a25a0147bb88c654",
+  "selection": "All label_included=1 rows. Resolve by DOI only. No record text used to formulate queries. Three fresh runs per topic. No tuning after freeze.",
+  "topics": [
+    {
+      "dataset": "Appenzeller-Herzog_2020",
+      "role": "development",
+      "review_doi": "10.1111/liv.14179",
+      "strategy": {
+        "search_fields": "title_abstract",
+        "corpus": "all",
+        "matching": "stemmed",
+        "blocks": [
+          {
+            "id": "condition",
+            "terms": [
+              "\"Wilson disease\"",
+              "\"Wilson's disease\"",
+              "hepatolenticular degeneration"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dataset": "Nagtegaal_2019",
+      "role": "heldout",
+      "review_doi": "10.30636/jbpa.22.71",
+      "strategy": {
+        "search_fields": "title_abstract",
+        "corpus": "all",
+        "matching": "stemmed",
+        "blocks": [
+          {
+            "id": "intervention",
+            "terms": [
+              "nudge",
+              "nudging",
+              "\"choice architecture\""
+            ]
+          },
+          {
+            "id": "context",
+            "terms": [
+              "healthcare",
+              "\"health care\"",
+              "clinical",
+              "physician",
+              "clinician",
+              "hospital"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
